@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter, useParams } from "next/navigation";
 import Image from "next/image";
 import { MessageList } from "@/components/chat/MessageList";
@@ -25,14 +25,7 @@ export default function ChatPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSending, setIsSending] = useState(false);
 
-  useEffect(() => {
-    loadMatchInfo();
-    loadMessages();
-    const cleanup = setupRealtime();
-    return cleanup;
-  }, [matchId]);
-
-  async function loadMatchInfo() {
+  const loadMatchInfo = useCallback(async () => {
     try {
       const res = await fetch(`/api/matches/${matchId}`);
       const result = await res.json();
@@ -47,9 +40,9 @@ export default function ChatPage() {
     } catch (error) {
       toast.error("通信エラーが発生しました");
     }
-  }
+  }, [matchId, router]);
 
-  async function loadMessages() {
+  const loadMessages = useCallback(async () => {
     setIsLoading(true);
     try {
       const res = await fetch(`/api/messages/${matchId}`);
@@ -81,9 +74,9 @@ export default function ChatPage() {
     } finally {
       setIsLoading(false);
     }
-  }
+  }, [matchId]);
 
-  function setupRealtime() {
+  const setupRealtime = useCallback(() => {
     const supabase = createClient();
 
     const channel = supabase
@@ -123,7 +116,15 @@ export default function ChatPage() {
     return () => {
       channel.unsubscribe();
     };
-  }
+  }, [matchId, currentUserId]);
+
+  useEffect(() => {
+    loadMatchInfo();
+    loadMessages();
+    const cleanup = setupRealtime();
+    return cleanup;
+  }, [loadMatchInfo, loadMessages, setupRealtime]);
+
 
   async function handleSend(content: string) {
     setIsSending(true);
