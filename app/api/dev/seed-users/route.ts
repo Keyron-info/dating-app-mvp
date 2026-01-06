@@ -3,6 +3,8 @@ import { createAdminClient } from "@/lib/supabase/server-admin";
 import { hashPassword } from "@/lib/auth/password";
 import { errorResponse, APIError } from "@/lib/utils/api";
 
+export const dynamic = 'force-dynamic';
+
 // テストユーザーのデータ
 const MALE_NAMES = [
   "太郎", "次郎", "三郎", "健太", "大輔", "翔太", "拓也", "直樹", "和也", "慎一"

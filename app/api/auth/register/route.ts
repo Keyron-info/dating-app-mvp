@@ -5,6 +5,8 @@ import { createSession } from "@/lib/auth/session";
 import { registerSchema } from "@/lib/validation/schemas";
 import { errorResponse, APIError } from "@/lib/utils/api";
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: Request) {
   try {
     const body = await request.json();

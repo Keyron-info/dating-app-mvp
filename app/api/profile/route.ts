@@ -4,6 +4,8 @@ import { createAdminClient } from "@/lib/supabase/server-admin";
 import { profileSchema } from "@/lib/validation/schemas";
 import { errorResponse, APIError } from "@/lib/utils/api";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
   try {
     const session = await getSession();

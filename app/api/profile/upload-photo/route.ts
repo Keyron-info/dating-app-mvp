@@ -3,6 +3,8 @@ import { getSession } from "@/lib/auth/session";
 import { createAdminClient } from "@/lib/supabase/server-admin";
 import { errorResponse, APIError } from "@/lib/utils/api";
 
+export const dynamic = 'force-dynamic';
+
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 

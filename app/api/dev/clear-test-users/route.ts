@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/server-admin";
 import { errorResponse, APIError } from "@/lib/utils/api";
 
+export const dynamic = 'force-dynamic';
+
 export async function POST() {
   try {
     // 本番環境では無効化

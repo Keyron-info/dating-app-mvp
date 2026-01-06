@@ -5,6 +5,8 @@ import { createClient } from "@/lib/supabase/client";
 import { deleteProfilePhoto } from "@/lib/utils/image";
 import { errorResponse, APIError } from "@/lib/utils/api";
 
+export const dynamic = 'force-dynamic';
+
 export async function DELETE(
   request: Request,
   { params }: { params: { index: string } }

@@ -3,6 +3,8 @@ import { getSession } from "@/lib/auth/session";
 import { createAdminClient } from "@/lib/supabase/server-admin";
 import { errorResponse, APIError } from "@/lib/utils/api";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(
   request: Request,
   { params }: { params: { matchId: string } }

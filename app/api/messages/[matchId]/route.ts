@@ -4,6 +4,8 @@ import { createAdminClient } from "@/lib/supabase/server-admin";
 import { messageSchema } from "@/lib/validation/schemas";
 import { errorResponse, APIError } from "@/lib/utils/api";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(
   request: Request,
   { params }: { params: { matchId: string } }
