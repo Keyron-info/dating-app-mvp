@@ -159,7 +159,9 @@ export function PhotoUpload({
           ) : (
             <label className="w-full h-full flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50">
               <input
-                ref={(el) => (fileInputRefs.current[index] = el)}
+                ref={(el) => {
+                  fileInputRefs.current[index] = el;
+                }}
                 type="file"
                 accept="image/jpeg,image/png,image/webp"
                 className="hidden"
