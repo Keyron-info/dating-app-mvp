@@ -14,7 +14,6 @@ export async function uploadProfilePhoto(
         maxWidthOrHeight: 1920, // より高解像度を許可
         useWebWorker: true,
         fileType: "image/jpeg",
-        quality: 0.9, // 品質を高めに設定
       });
     } catch (compressionError) {
       console.error("Image compression error:", compressionError);

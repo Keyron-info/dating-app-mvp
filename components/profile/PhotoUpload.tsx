@@ -52,7 +52,6 @@ export function PhotoUpload({
           maxWidthOrHeight: 1920,
           useWebWorker: true,
           fileType: "image/jpeg",
-          quality: 0.9,
         });
       } catch (compressionError) {
         console.error("Image compression error:", compressionError);
